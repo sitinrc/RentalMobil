@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class mobil extends Model
+class Mobil extends Model
 {
     use HasFactory;
+
+    
 }

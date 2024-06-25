@@ -4,7 +4,9 @@ use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CarController;
+use App\Http\Controllers\MobilController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\TransaksiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,6 +14,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/cars', [App\Http\Controllers\CarController::class, 'index'])->name('cars.index');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/tentangkami', [App\Http\Controllers\HomeController::class, 'index']);
+Route::resource('mobil', MobilController::class);
+Route::resource('pelanggan', PelangganController::class);
+Route::resource('transaksi', TransaksiController::class);
 Route::resource('user', userController::class);    
