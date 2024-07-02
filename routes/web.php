@@ -22,3 +22,6 @@ Route::resource('transaksi', TransaksiController::class);
 Route::resource('user', userController::class);    
 
 // Route::get('logout', userController::class, "logout");
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/mobil', [App\Http\Controllers\MobilController::class, 'index'])->name('mobil.index');
+Route::resource('user', userController::class);    
