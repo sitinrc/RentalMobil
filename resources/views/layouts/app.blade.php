@@ -39,9 +39,6 @@
                                 <a class="nav-link" href="/home">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="/tentangkami">Tentang Kami</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="/mobil">Mobil</a>
                                 </li>
                                 <li class="nav-item">
