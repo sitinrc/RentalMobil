@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class mobil extends Model
+class Mobil extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
     
     protected $fillable = [
         'title',
@@ -16,4 +17,8 @@ class mobil extends Model
         'tahun',
         'harga_sewa',
     ];
+=======
+
+    
+>>>>>>> fc028bd0746415b86988c21efe70a1a7f88ca778
 }

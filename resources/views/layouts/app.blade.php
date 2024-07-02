@@ -29,13 +29,24 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <x-navbar></x-navbar>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
+                                <li class="nav-item">
+                                <a class="nav-link" href="/home">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/mobil">Mobil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/pelanggan">Pelanggan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/transaksi">Transaksi</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
