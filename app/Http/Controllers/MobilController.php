@@ -57,11 +57,6 @@ class MobilController extends Controller
         return redirect()->route('mobil.index')->with('success', 'Mobil updated successfully.');
     }
 
-    public function destroy(Mobil $mobil)
-    {
-        $mobil->delete();
-
-        return redirect()->route('mobil.index')->with('success', 'Mobil deleted successfully.');
-    }
+    
 }
 

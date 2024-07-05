@@ -61,11 +61,5 @@ class TransaksiController extends Controller
                          ->with('success', 'Transaksi berhasil diperbarui.');
     }
 
-    public function destroy(Transaksi $transaksi)
-    {
-        $transaksi->delete();
-
-        return redirect()->route('transaksi.index')
-                         ->with('success', 'Transaksi berhasil dihapus.');
-    }
+   
 }
