@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Mobil extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
     
     protected $fillable = [
         'title',
@@ -17,8 +16,6 @@ class Mobil extends Model
         'tahun',
         'harga_sewa',
     ];
-=======
 
     
->>>>>>> fc028bd0746415b86988c21efe70a1a7f88ca778
 }

@@ -24,4 +24,6 @@ Route::resource('user', userController::class);
 // Route::get('logout', userController::class, "logout");
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/mobil', [App\Http\Controllers\MobilController::class, 'index'])->name('mobil.index');
+Route::get('/pelanggan', [App\Http\Controllers\PelangganController::class, 'index'])->name('pelanggan.index');
+Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index'])->name('transaksi.index');
 Route::resource('user', userController::class);    

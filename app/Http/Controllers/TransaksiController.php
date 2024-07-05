@@ -10,12 +10,12 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksis = Transaksi::all();
-        return view('transaksis.index', compact('transaksis'));
+        return view('transaksi.index', compact('transaksis'));
     }
 
     public function create()
     {
-        return view('transaksis.create');
+        return view('transaksi.create');
     }
 
     public function store(Request $request)
@@ -30,18 +30,18 @@ class TransaksiController extends Controller
 
         Transaksi::create($request->all());
 
-        return redirect()->route('transaksis.index')
+        return redirect()->route('transaksi.index')
                          ->with('success', 'Transaksi berhasil dibuat.');
     }
 
     public function show(Transaksi $transaksi)
     {
-        return view('transaksis.show', compact('transaksi'));
+        return view('transaksi.show', compact('transaksi'));
     }
 
     public function edit(Transaksi $transaksi)
     {
-        return view('transaksis.edit', compact('transaksi'));
+        return view('transaksi.edit', compact('transaksi'));
     }
 
     public function update(Request $request, Transaksi $transaksi)
@@ -57,7 +57,7 @@ class TransaksiController extends Controller
 
         $transaksi->update($request->all());
 
-        return redirect()->route('transaksis.index')
+        return redirect()->route('transaksi.index')
                          ->with('success', 'Transaksi berhasil diperbarui.');
     }
 
@@ -65,7 +65,7 @@ class TransaksiController extends Controller
     {
         $transaksi->delete();
 
-        return redirect()->route('transaksis.index')
+        return redirect()->route('transaksi.index')
                          ->with('success', 'Transaksi berhasil dihapus.');
     }
 }

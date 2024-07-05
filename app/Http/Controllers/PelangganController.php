@@ -9,12 +9,13 @@ class PelangganController extends Controller
 {
     public function index()
     {
-        // Menampilkan daftar pelanggan
+        $pelanggans = Pelanggan::all();
+        return view('pelanggan.index', compact('pelanggans'));
     }
 
     public function create()
     {
-        return view('pelanggans.create');
+        return view('pelanggan.create');
     }
 
     public function store(Request $request)
@@ -28,7 +29,7 @@ class PelangganController extends Controller
 
         Pelanggan::create($request->all());
 
-        return redirect()->route('pelanggans.index')->with('success', 'Pelanggan created successfully.');
+        return redirect()->route('pelanggan.index')->with('success', 'Pelanggan created successfully.');
     }
 
     // Metode lain seperti edit, update, destroy bisa ditambahkan sesuai kebutuhan

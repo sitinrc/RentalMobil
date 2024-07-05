@@ -9,12 +9,12 @@ class MobilController extends Controller
     public function index()
     {
         $mobils = Mobil::all();
-        return view('mobils.index', compact('mobils'));
+        return view('mobil.index', compact('mobils'));
     }
 
     public function create()
     {
-        return view('mobils.create');
+        return view('mobil.create');
     }
 
     public function store(Request $request)
@@ -29,17 +29,17 @@ class MobilController extends Controller
 
         Mobil::create($request->all());
 
-        return redirect()->route('mobils.index')->with('success', 'Mobil created successfully.');
+        return redirect()->route('mobil.index')->with('success', 'Mobil created successfully.');
     }
 
     public function show(Mobil $mobil)
     {
-        return view('mobils.show', compact('mobil'));
+        return view('mobil.show', compact('mobil'));
     }
 
     public function edit(Mobil $mobil)
     {
-        return view('mobils.edit', compact('mobil'));
+        return view('mobil.edit', compact('mobil'));
     }
 
     public function update(Request $request, Mobil $mobil)
@@ -54,14 +54,14 @@ class MobilController extends Controller
 
         $mobil->update($request->all());
 
-        return redirect()->route('mobils.index')->with('success', 'Mobil updated successfully.');
+        return redirect()->route('mobil.index')->with('success', 'Mobil updated successfully.');
     }
 
     public function destroy(Mobil $mobil)
     {
         $mobil->delete();
 
-        return redirect()->route('mobils.index')->with('success', 'Mobil deleted successfully.');
+        return redirect()->route('mobil.index')->with('success', 'Mobil deleted successfully.');
     }
 }
 
