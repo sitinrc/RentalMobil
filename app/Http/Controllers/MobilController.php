@@ -25,6 +25,10 @@ class MobilController extends Controller
             'merk' => 'required|string|max:255',
             'tahun' => 'required|date_format:Y',
             'harga_sewa' => 'required|numeric',
+            
+            'nama_mobil' => 'required|string|max:255',
+            'merk' => 'required|string|max:255',
+            'tahun' => 'required',
         ]);
 
         Mobil::create($request->all());
@@ -37,31 +41,37 @@ class MobilController extends Controller
         return view('mobils.show', compact('mobil'));
     }
 
-    public function edit(Mobil $mobil)
+    public function edit($id)
     {
-        return view('mobils.edit', compact('mobil'));
+        $mobil = Mobil::findOrFail($id);
+        return view('mobil.edit', compact('mobil'));
     }
 
-    public function update(Request $request, Mobil $mobil)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
             'nama_mobil' => 'required|string|max:255',
             'merk' => 'required|string|max:255',
-            'tahun' => 'required|date_format:Y',
-            'harga_sewa' => 'required|numeric',
+            'tahun' => 'required|integer',
+            'harga_sewa_per_hari' => 'required|numeric',
         ]);
 
-        $mobil->update($request->all());
+        $mobil = Mobil::findOrFail($id);
+        $mobil->nama_mobil = $request->nama_mobil;
+        $mobil->merk = $request->merk;
+        $mobil->tahun = $request->tahun;
+        $mobil->harga_sewa_per_hari = $request->harga_sewa_per_hari;
+        $mobil->save();
 
-        return redirect()->route('mobils.index')->with('success', 'Mobil updated successfully.');
+        return redirect()->route('mobil.index')->with('success-status', 'Mobil berhasil diperbarui.');
     }
+
 
     public function destroy(Mobil $mobil)
     {
         $mobil->delete();
 
-        return redirect()->route('mobils.index')->with('success', 'Mobil deleted successfully.');
+        return redirect()->route('mobil.index')
+                         ->with('success', 'mobils berhasil dihapus.');   
     }
 }
-
