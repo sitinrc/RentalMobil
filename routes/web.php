@@ -10,6 +10,10 @@ use App\Http\Controllers\TransaksiController;
 
 
 Route::get('/', function () {
+    if(!Auth::check()) {
+        return redirect('/login');
+    }
+
     return view('welcome');
 });
 
@@ -24,4 +28,11 @@ Route::resource('user', userController::class);
 // Route::get('logout', userController::class, "logout");
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/mobil', [App\Http\Controllers\MobilController::class, 'index'])->name('mobil.index');
-Route::resource('user', userController::class);    
+Route::get('/pelanggan', [App\Http\Controllers\PelangganController::class, 'index'])->name('pelanggan.index');
+Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index'])->name('transaksi.index');   
+Route::delete('/pelanggan/{pelanggan}', [PelangganController::class, 'destroy'])->name('pelanggan.destroy');
+Route::delete('/mobil/{mobil}', [MobilController::class, 'destroy'])->name('mobil.destroy');
+Route::delete('/transaksi/{transaksi}', [TransaksiController::class, 'destroy'])->name('transaksi.destroy');
+Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
+
+  

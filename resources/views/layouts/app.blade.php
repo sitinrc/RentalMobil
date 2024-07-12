@@ -13,12 +13,40 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+        .navbar {
+            background-color: #6c757d;
+        }
+        .navbar-brand, .nav-link, .dropdown-item {
+            color: #ffffff !important;
+        }
+        .nav-link:hover, .dropdown-item:hover {
+            color: #d4d4d4 !important;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .header-custom {
+            padding: 2rem;
+        }
+    </style>
+
+   
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -29,24 +57,26 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/mobil">Mobil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pelanggan">Pelanggan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/transaksi">Transaksi</a>
+                        </li>
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
-                                <a class="nav-link" href="/home">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/mobil">Mobil</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/pelanggan">Pelanggan</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/transaksi">Transaksi</a>
-                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
@@ -82,8 +112,13 @@
         </nav>
 
         <main class="py-4 container">
-            @yield('content')
+            <div class="row">
+                @yield('content')
+            </div>
         </main>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

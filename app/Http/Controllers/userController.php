@@ -2,63 +2,94 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mobil;
+use App\Models\Pelanggan;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
-class userController extends Controller
+class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    // Menampilkan daftar semua mobil
+    public function indexMobil()
     {
-        //
+        $mobils = Mobil::all();
+        return response()->json($mobils);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // Menampilkan daftar semua pelanggan
+    public function indexPelanggan()
     {
-        //
+        $pelanggans = Pelanggan::all();
+        return response()->json($pelanggans);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    // Menampilkan daftar semua transaksi
+    public function indexTransaksi()
     {
-        //
+        $transaksis = Transaksi::with(['mobil', 'pelanggan'])->get();
+        return response()->json($transaksis);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // Menyimpan data mobil baru
+    public function storeMobil(Request $request)
     {
-        //
+        $mobil = Mobil::create($request->all());
+        return response()->json($mobil, 201);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    // Menyimpan data pelanggan baru
+    public function storePelanggan(Request $request)
     {
-        //
+        $pelanggan = Pelanggan::create($request->all());
+        return response()->json($pelanggan, 201);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // Menyimpan data transaksi baru
+    public function storeTransaksi(Request $request)
     {
-        //
+        $transaksi = Transaksi::create($request->all());
+        return response()->json($transaksi, 201);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    // Mengupdate data mobil
+    public function updateMobil(Request $request, Mobil $mobil)
     {
-        //
+        $mobil->update($request->all());
+        return response()->json($mobil);
+    }
+
+    // Mengupdate data pelanggan
+    public function updatePelanggan(Request $request, Pelanggan $pelanggan)
+    {
+        $pelanggan->update($request->all());
+        return response()->json($pelanggan);
+    }
+
+    // Mengupdate data transaksi
+    public function updateTransaksi(Request $request, Transaksi $transaksi)
+    {
+        $transaksi->update($request->all());
+        return response()->json($transaksi);
+    }
+
+    // Menghapus data mobil
+    public function destroyMobil(Mobil $mobil)
+    {
+        $mobil->delete();
+        return response()->json(null, 204);
+    }
+
+    // Menghapus data pelanggan
+    public function destroyPelanggan(Pelanggan $pelanggan)
+    {
+        $pelanggan->delete();
+        return response()->json(null, 204);
+    }
+
+    // Menghapus data transaksi
+    public function destroyTransaksi(Transaksi $transaksi)
+    {
+        $transaksi->delete();
+        return response()->json(null, 204);
     }
 }

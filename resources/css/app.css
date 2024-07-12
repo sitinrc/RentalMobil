@@ -44,3 +44,17 @@ img.custom-img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.header-custom {
+    background-color: #6c757d; /* Secondary color */
+    color: #ffffff; /* White text */
+}
+
+.card-body-custom {
+    background-color: #f8f9fa; /* Light background */
+}
+
+.custom-img {
+    max-height: 300px;
+    object-fit: cover;
+}
+
