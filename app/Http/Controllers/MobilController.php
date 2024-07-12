@@ -9,12 +9,12 @@ class MobilController extends Controller
     public function index()
     {
         $mobils = Mobil::all();
-        return view('mobils.index', compact('mobils'));
+        return view('mobil.index', compact('mobils'));
     }
 
     public function create()
     {
-        return view('mobils.create');
+        return view('mobil.create');
     }
 
     public function store(Request $request)
