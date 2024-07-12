@@ -4,25 +4,34 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="card-title text-capitalize">Form Transaksi</h3>
-            <a href="{{ route('transaksis.index') }}" class="nav-link text-capitalize">Back</a>
+            <a href="{{ route('transaksi.index') }}" class="nav-link text-capitalize">Back</a>
         </div>
         <div class="card-body">
-            <form action="{{ route('transaksis.store') }}" method="POST">
+            <form action="{{ route('transaksi.store') }}" method="POST">
                 @csrf
                 <div class="form-group my-1">
-                    <label for="mobil_id" class="text-capitalize">Mobil</label>
-                    <input type="text" name="mobil_id" id="mobil_id" 
-                    class="form-control @error('mobil_id') border-danger @enderror"
-                    placeholder="Mobil ID" value="{{ old('mobil_id') }}">
+                    <label for="mobil_id" class="text-capitalize">Nama Mobil</label>
+                    <select name="mobil_id" id="mobil_id" class="form-control">
+                        @foreach ($mobil as $car)
+                            <option value="{{ $car->id }}">
+                                {{ $car->nama_mobil }}
+                            </option>
+                        @endforeach
+                    </select>
+
                     @error('mobil_id')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-group my-1">
-                    <label for="pelanggan_id" class="text-capitalize">Pelanggan</label>
-                    <input type="text" name="pelanggan_id" id="pelanggan_id" 
-                    class="form-control @error('pelanggan_id') border-danger @enderror"
-                    placeholder="Pelanggan ID" value="{{ old('pelanggan_id') }}">
+                    <label for="tanggal_mulai" class="text-capitalize">Nama Pelanggan</label>
+                    <select name="pelanggan_id" id="pelanggan_id" class="form-control">
+                        @foreach ($pelanggan as $data)
+                            <option value="{{ $data->id }}">
+                                {{ $data->nama }}
+                            </option>
+                        @endforeach
+                    </select>
                     @error('pelanggan_id')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
