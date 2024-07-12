@@ -71,7 +71,9 @@ class MobilController extends Controller
     {
         $mobil->delete();
 
+
         return redirect()->route('mobil.index')
-                         ->with('success', 'mobils berhasil dihapus.');   
+                         ->with('success', 'mobils berhasil dihapus.');
+    
     }
 }

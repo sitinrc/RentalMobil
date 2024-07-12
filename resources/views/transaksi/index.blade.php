@@ -1,25 +1,13 @@
-@extends('layouts.app')
-
-@section('content')
-
-<div class="card">
-    <div class="card-header d-flex justify-content-center align-items-center">
-        <h1>Daftar Transaksi</h1>
-        <a href="{{ route('transaksi.create') }}" class="btn btn-primary ms-auto">Create</a>
-    </div>
-    @if (session('success-status'))
-    <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
-        {{ session('success-status') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @elseif(session('danger-status'))
-    <div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
-        {{ session('danger-status') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
-
-    <table class="table">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Transaksi - Rental Mobil</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Daftar Transaksi</h2>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>No</th>
@@ -48,5 +36,5 @@
         </tbody>
     </table>
 </div>
-
-@endsection
+</body>
+</html>

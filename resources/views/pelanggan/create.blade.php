@@ -4,10 +4,10 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="card-title text-capitalize">Form Pelanggan</h3>
-            <a href="{{ route('pelanggans.index') }}" class="nav-link text-capitalize">Back</a>
+            <a href="{{ route('pelanggan.index') }}" class="nav-link text-capitalize">Back</a>
         </div>
         <div class="card-body">
-            <form action="{{ route('pelanggans.store') }}" method="POST">
+            <form action="{{ route('pelanggan.store') }}" method="POST">
                 @csrf
                 <div class="form-group my-1">
                     <label for="nama" class="text-capitalize">Nama</label>
@@ -52,4 +52,3 @@
         </div>
     </div>
 @endsection
-

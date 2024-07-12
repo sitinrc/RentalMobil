@@ -10,12 +10,12 @@ class Mobil extends Model
     use HasFactory;
     
     protected $fillable = [
-        'title',
+
         'nama_mobil',
         'merk',
         'tahun',
-        'harga_sewa',
+        'harga_sewa_per_hari',
+        
     ];
 
-    
 }

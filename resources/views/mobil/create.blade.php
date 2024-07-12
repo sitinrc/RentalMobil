@@ -1,4 +1,4 @@
-@extends('layouts.app')
+[13.38, 12/7/2024] Siti Nurcahyani: @extends('layouts.app')
 
 @section('content')
     <div class="card">
@@ -9,15 +9,7 @@
         <div class="card-body">
             <form action="{{ route('mobil.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group my-1">
-                    <label for="title" class="text-capitalize">Mobil Title</label>
-                    <input type="text" name="title" id="title" 
-                    class="form-control @error('title') border-danger @enderror"
-                    placeholder="Mobil Title" value="{{ old('title') }}">
-                    @error('title')
-                    <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
+               
                 <div class="form-group my-1">
                     <label for="nama_mobil" class="text-capitalize">Nama Mobil</label>
                     <input type="text" name="nama_mobil" id="nama_mobil" 
@@ -38,7 +30,7 @@
                 </div>
                 <div class="form-group my-1">
                     <label for="tahun" class="text-capitalize">Tahun</label>
-                    <input type="date" name="tahun" id="tahun" 
+                    <input type="number" name="tahun" id="tahun" 
                     class="form-control @error('tahun') border-danger @enderror"
                     placeholder="Tahun" value="{{ old('tahun') }}">
                     @error('tahun')
@@ -46,23 +38,15 @@
                     @enderror
                 </div>
                 <div class="form-group my-1">
-                    <label for="harga_sewa" class="text-capitalize">Harga Sewa Perhari</label>
-                    <input type="text" name="harga_sewa" id="harga_sewa" 
-                    class="form-control @error('harga_sewa') border-danger @enderror"
-                    placeholder="Harga Sewa Perhari" value="{{ old('harga_sewa') }}">
-                    @error('harga_sewa')
+                    <label for="harga_sewa_per_hari" class="text-capitalize">Harga Sewa Perhari</label>
+                    <input type="number" name="harga_sewa_per_hari" id="harga_sewa_per_hari" 
+                    class="form-control @error('harga_sewa_per_hari') border-danger @enderror"
+                    placeholder="Harga Sewa Perhari" value="{{ old('harga_sewa_per_hari') }}">
+                    @error('harga_sewa_per_hari')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-                <div class="form-group my-1">
-                    <label for="cover" class="text-capitalize">Cover</label>
-                    <input type="file" name="cover" id="cover" 
-                    class="form-control @error('cover') border-danger @enderror"
-                    placeholder="Harga Sewa Perhari" value="{{ old('cover') }}">
-                    @error('cover')
-                    <small class="text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
+                
                 <div class="mt-2 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary btn-sm text-capitalize">Save</button>
                 </div>
