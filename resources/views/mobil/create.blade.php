@@ -1,4 +1,4 @@
-[13.38, 12/7/2024] Siti Nurcahyani: @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <div class="card">
@@ -7,6 +7,17 @@
             <a href="{{ route('mobil.index') }}" class="nav-link text-capitalize">Back</a>
         </div>
         <div class="card-body">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+ 
+                
             <form action="{{ route('mobil.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                
@@ -46,7 +57,6 @@
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-                
                 <div class="mt-2 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary btn-sm text-capitalize">Save</button>
                 </div>

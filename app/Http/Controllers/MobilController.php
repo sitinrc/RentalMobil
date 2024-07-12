@@ -20,20 +20,15 @@ class MobilController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
             'nama_mobil' => 'required|string|max:255',
             'merk' => 'required|string|max:255',
             'tahun' => 'required|date_format:Y',
-            'harga_sewa' => 'required|numeric',
-            
-            'nama_mobil' => 'required|string|max:255',
-            'merk' => 'required|string|max:255',
-            'tahun' => 'required',
+            'harga_sewa_per_hari' => 'required|numeric',
         ]);
 
         Mobil::create($request->all());
 
-        return redirect()->route('mobils.index')->with('success', 'Mobil created successfully.');
+        return redirect()->route('mobil.index')->with('success', 'Mobil created successfully.');
     }
 
     public function show(Mobil $mobil)
