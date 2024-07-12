@@ -2,12 +2,11 @@
 
 @section('content')
 
-<div class="card">
-    <div class="card-header d-flex justify-content-center align-items-center">
-        <h1>Daftar Pelanggan</h1>
+<div class="card bg-light">
+    <div class="card-header d-flex justify-content-center align-items-center bg-secondary text-white">
+        <b><h1>Daftar Pelanggan</h1></b>
         <a href="pelanggan/create" class="btn btn-primary ms-auto">Create</a>
     </div>
-
     @if (session('success-status'))
     <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
         {{ session('success-status') }}
@@ -19,35 +18,39 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
+</div>
 
-    <div class="container mt-5">
-        <table class="table table-bordered table-hover w-100">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>No Telepon</th>
-                    <th>Email</th>
-                    <th>Option</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($pelanggans as $pelanggan)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $pelanggan->nama }}</td>
-                    <td>{{ $pelanggan->alamat }}</td>
-                    <td>{{ $pelanggan->no_telepon }}</td>
-                    <td>{{ $pelanggan->email }}</td>
-                    <td>
-                        <a href="destroy/{{ $pelanggan->id }}" onclick="return confirm('Are you sure to delete?');" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-bordered table-hover w-100 bg-white">
+        <thead class="bg-secondary text-white">
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>No Telepon</th>
+                <th>Email</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($pelanggans as $pelanggan)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $pelanggan->nama }}</td>
+                <td>{{ $pelanggan->alamat }}</td>
+                <td>{{ $pelanggan->no_telepon }}</td>
+                <td>{{ $pelanggan->email }}</td>
+                <td>
+                    <a href="{{ route('pelanggan.edit', $pelanggan->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('pelanggan.destroy', $pelanggan->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 
 @endsection
