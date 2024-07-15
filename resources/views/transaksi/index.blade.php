@@ -22,7 +22,7 @@
 
     <table class="table table-bordered table-hover w-100 bg-white">
         <thead class="bg-dark text-white">
-            <tr>
+            <tr class="table-secondary">
                 <th>No</th>
                 <th>Nama Mobil</th>
                 <th>Nama Pelanggan</th>

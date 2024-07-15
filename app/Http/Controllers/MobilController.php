@@ -3,11 +3,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mobil;
+use Illuminate\Support\Facades\Auth;
 
 class MobilController extends Controller
 {
     public function index()
     {
+
         $mobils = Mobil::all();
         return view('mobil.index', compact('mobils'));
     }

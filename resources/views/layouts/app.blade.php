@@ -13,13 +13,13 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    
+    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
-    
     <style>
         body {
             font-family: 'Nunito', sans-serif;
+            background-color: #f8f9fa; /* Warna abu muda */
         }
         .navbar {
             background-color: #6c757d;
@@ -41,10 +41,15 @@
         }
     </style>
 
-   
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #dcdee2; 
+        }
+</style>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
             <div class="container">
@@ -81,12 +86,6 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -120,5 +119,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 </html>

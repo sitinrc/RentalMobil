@@ -10,10 +10,7 @@ use App\Http\Controllers\TransaksiController;
 
 
 Route::get('/', function () {
-    if(!Auth::check()) {
-        return redirect('/login');
-    }
-
+   
     return view('welcome');
 });
 

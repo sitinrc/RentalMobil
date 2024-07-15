@@ -6,11 +6,16 @@ use App\Models\Mobil;
 use App\Models\Pelanggan;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
     public function index()
     {
+        if(!Auth::check()) {
+            return redirect('/login');
+        }
+
         $transaksis = Transaksi::all();
         return view('transaksi.index', compact('transaksis'));
     }
@@ -77,7 +82,7 @@ class TransaksiController extends Controller
     {
         $transaksi->delete();
 
-        return redirect()->route('transaksi.ind  ex')
+        return redirect()->route('transaksi.index')
                          ->with('success', 'Transaksi berhasil dihapus.');
     }
 } 
