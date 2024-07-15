@@ -1,69 +1,71 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="card">
-<div class="card-header d-flex justify-content-center align-items-center">
-    <h1>Form Edit Transaksi</h1>
-    <a href="/transaksis" class="btn btn-primary ms-auto">Back</a>
+    <div class="card-header">
+        <h3>Edit Transaksi</h3>
+    </div>
+    <div class="card-body">
+        <form action="{{ route('transaksi.update', $transaksi->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="form-group my-1">
+                <label for="mobil_id" class="text-capitalize">Mobil</label>
+                <select name="mobil_id" id="mobil_id" class="form-control">
+                    @foreach ($mobil as $car)
+                        <option value="{{ $car->id }}" {{ $car->id == $transaksi->mobil_id ? 'selected' : '' }}>
+                            {{ $car->nama_mobil }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('mobil_id')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-group my-1">
+                <label for="pelanggan_id" class="text-capitalize">Pelanggan</label>
+                <select name="pelanggan_id" id="pelanggan_id" class="form-control">
+                    @foreach ($pelanggan as $data)
+                        <option value="{{ $data->id }}" {{ $data->id == $transaksi->pelanggan_id ? 'selected' : '' }}>
+                            {{ $data->nama }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('pelanggan_id')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-group my-1">
+                <label for="tanggal_mulai" class="text-capitalize">Tanggal Mulai</label>
+                <input type="date" name="tanggal_mulai" id="tanggal_mulai" 
+                       class="form-control @error('tanggal_mulai') border-danger @enderror"
+                       value="{{ old('tanggal_mulai', $transaksi->tanggal_mulai) }}">
+                @error('tanggal_mulai')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-group my-1">
+                <label for="tanggal_selesai" class="text-capitalize">Tanggal Selesai</label>
+                <input type="date" name="tanggal_selesai" id="tanggal_selesai" 
+                       class="form-control @error('tanggal_selesai') border-danger @enderror"
+                       value="{{ old('tanggal_selesai', $transaksi->tanggal_selesai) }}">
+                @error('tanggal_selesai')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-group my-1">
+                <label for="total_harga" class="text-capitalize">Total Harga</label>
+                <input type="text" name="total_harga" id="total_harga" 
+                       class="form-control @error('total_harga') border-danger @enderror"
+                       value="{{ old('total_harga', $transaksi->total_harga) }}">
+                @error('total_harga')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="mt-2 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary btn-sm text-capitalize">Save</button>
+            </div>
+        </form>
+    </div>
 </div>
-
-<form action="{{ url('transaksis/'.$transaksis->id.'') }}" method="post">
-    @csrf
-   @method('PUT')
-    <div class="form-group row mt-3 ps-5 pe-5">
-        <label class="col-sm-2" for="mobil_id">Nama Mobil</label>
-        <div class="col-sm-10">
-            <input type="text" name="mobil_id" class="form-control" value="{{ $transaksis->mobil_id }}" id="mobil_id">
-                @error('Mobil Id')
-                    <span class="text-danger">{{ $message }}</span> 
-                @enderror
-        </div>
-    </div>
-    <div class="form-group row mt-3 ps-5 pe-5">
-        <label class="col-sm-2" for="pelanggan_id">Nama Pelanggan</label>
-        <div class="col-sm-10">
-            <input type="text" name="pelanggan_id" class="form-control" value="{{ $transaksis->pelanggan_id }}" id="pelanggan_id">
-            @error('Pelanggan Id')
-                <span class="text-danger">{{ $message }}</span> 
-            @enderror
-        </div>
-    </div>
-    <div class="form-group row mt-3 ps-5 pe-5">
-        <label class="col-sm-2" for="tanggal_mulai">Tanggal Mulai</label>
-        <div class="col-sm-10">
-            <input type="date" name="tanggal_mulai" class="form-control" value="{{ $transaksis->tanggal_mulai }}" id="tanggal_mulai">
-                @error('Tanggal Mulai')
-                    <span class="text-danger">{{ $message }}</span> 
-                @enderror
-        </div>
-    <div class="form-group row mt-3 ps-5 pe-5">
-        <label class="col-sm-2" for="tanggal_selesai">Tanggal Selesai</label>
-        <div class="col-sm-10">
-            <input type="date" name="tanggal_selesai" class="form-control" value="{{ $transaksis->tanggal_selesai }}" id="tanggal_selesai">
-                @error('Tanggal Selesai')
-                    <span class="text-danger">{{ $message }}</span> 
-                @enderror
-        </div>
-    </div>
-    <div class="form-group row mt-3 ps-5 pe-5">
-        <label class="col-sm-2" for="total_harga">Total Harga</label>
-        <div class="col-sm-10">
-            <input type="number" name="total_harga" class="form-control" value="{{ $transaksis->total_harga }}" id="total_harga">
-                @error('Total Harga')
-                    <span class="text-danger">{{ $message }}</span> 
-                @enderror
-        </div>
-   
-
-<div class="form-group row my-4 ps-5">
-    <div class="col-sm-10 offset-sm-2">
-        <button class="btn btn-primary" type="submit">Save</button>
-    </div>
-</div>
-</form>
-</div>
-
 @endsection
-
-
